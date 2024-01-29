@@ -1,7 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { useGetBlogPostsQuery } from '@/app/redux/apis/blogApi'
 import { useRouter } from 'next/navigation'
+import { useGetBlogPostsQuery } from '@/app/redux/apis/blogApi'
+import { blog } from '@/app/component/types/types'
+import style from './blog.module.css'
 
 const Blogs = () => {
   const router = useRouter()
@@ -15,8 +17,8 @@ const Blogs = () => {
   useEffect(() => {
     const onScroll = () => {
       const scrolledToBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight
-      if (scrolledToBottom && !isFetching) {
+        window.innerHeight + window.scrollY + 1 >= document.body.offsetHeight
+      if (scrolledToBottom) {
         setStart(start + 20)
         setEnd(end + 20)
       }
@@ -27,28 +29,35 @@ const Blogs = () => {
     return function () {
       document.removeEventListener('scroll', onScroll)
     }
-  }, [start, end, isFetching])
-  console.log(data)
+  }, [start, end])
+
   return (
-    <div>
+    <div className={style.blogWrapper}>
       {isSuccess &&
-        data.blogs.map((blog: typeof data.blogs, index: number) => {
+        data.blogs.map((blog: blog, index: number) => {
           return (
             <div
-              key={blog.id}
+              key={blog.id ? +blog.id + index : index}
               onClick={() => {
                 router.push(`/post/${blog.id}`)
               }}
+              className={style.blogPost}
             >
               <img
                 src={blog.photo_url}
                 alt={blog.title + index}
-                style={{ width: '300px' }}
+                style={{ width: '90%', height: '18rem', padding: '10px' }}
               />
               <div>{blog.title}</div>
             </div>
           )
         })}
+
+      {(isLoading || isFetching) && (
+        <div className='display-flex-item-center'>
+          <span className='loader-spiner'></span>
+        </div>
+      )}
     </div>
   )
 }

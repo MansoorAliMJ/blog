@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const blogApi = createApi({
-  reducerPath: "blogApi",
+  reducerPath: 'blogApi',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_base_url,
   }),
@@ -10,21 +10,24 @@ export const blogApi = createApi({
       query: ({ start, end }) => {
         return {
           url: `/sample-data/blog-posts?offset=${start}&limit=${end}`,
-        };
+        }
       },
       serializeQueryArgs: ({ endpointName }) => {
-        return endpointName;
+        return endpointName
       },
       // Always merge incoming data to the cache entry
       merge: (currentCache, newItems) => {
-        currentCache.blogs.push(...newItems.blogs);
+        currentCache.limit = newItems.limit
+        currentCache.message = newItems.message
+        currentCache.offset = newItems.offset
+        currentCache.blogs.push(...newItems.blogs)
       },
       // Refetch when the page arg changes
       forceRefetch({ currentArg, previousArg }) {
-        return currentArg !== previousArg;
+        return currentArg !== previousArg
       },
     }),
   }),
-});
+})
 
-export const { useGetBlogPostsQuery } = blogApi;
+export const { useGetBlogPostsQuery } = blogApi

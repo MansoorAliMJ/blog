@@ -1,0 +1,7 @@
+.blogWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.blogPost {
+  flex-basis: 33.33333%;
+}

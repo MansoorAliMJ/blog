@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import React, { Suspense } from 'react'
 
 import styles from './page.module.css'
-import Blogs from '@/app/component/Blogs'
+import Blogs from '@/app/component/Blogs/Blogs'
 
 export const metadata: Metadata = {
   title: 'Usedo | Blog, listing, and More',
