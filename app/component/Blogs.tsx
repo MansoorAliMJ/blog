@@ -1,8 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { useGetBlogPostsQuery } from '@/app/redux/apis/blogApi'
+import { useRouter } from 'next/navigation'
 
 const Blogs = () => {
+  const router = useRouter()
   const [start, setStart] = useState<number>(0)
   const [end, setEnd] = useState<number>(20)
   const { data, isLoading, isFetching, isSuccess } = useGetBlogPostsQuery({
@@ -32,7 +34,12 @@ const Blogs = () => {
       {isSuccess &&
         data.blogs.map((blog: typeof data.blogs, index: number) => {
           return (
-            <div key={blog.id}>
+            <div
+              key={blog.id}
+              onClick={() => {
+                router.push(`/post/${blog.id}`)
+              }}
+            >
               <img
                 src={blog.photo_url}
                 alt={blog.title + index}
