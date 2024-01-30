@@ -1,5 +1,5 @@
 .navbarWrapper {
-  background-color: #3d7bae;
+  background-color: #242145;
   color: #ffde59;
   display: flex;
   justify-content: center;
@@ -7,5 +7,12 @@
   padding: 10px;
   font-size: 20px;
   cursor: pointer;
-  border: 1px solid #00bf63;
+}
+
+.nabarselected {
+  border-bottom: 1px solid white;
+}
+
+.nabarselected :hover {
+  color: white;
 }
