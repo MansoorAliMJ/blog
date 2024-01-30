@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { useRouter } from 'next/navigation'
 import { useGetBlogPostsQuery } from '@/app/redux/apis/blogApi'
 import { blog } from '@/app/component/types/types'
@@ -29,36 +29,46 @@ const Blogs = () => {
     return function () {
       document.removeEventListener('scroll', onScroll)
     }
-  }, [start, end])
+  }, [start])
 
   return (
-    <div className={style.blogWrapper}>
-      {isSuccess &&
-        data.blogs.map((blog: blog, index: number) => {
-          return (
-            <div
-              key={blog.id ? +blog.id + index : index}
-              onClick={() => {
-                router.push(`/post/${blog.id}`)
-              }}
-              className={style.blogPost}
-            >
-              <img
-                src={blog.photo_url}
-                alt={blog.title + index}
-                style={{ width: '90%', height: '18rem', padding: '10px' }}
-              />
-              <div>{blog.title}</div>
-            </div>
-          )
-        })}
+    <Fragment>
+      <div className={style.blogWrapper}>
+        {isSuccess &&
+          data.blogs.map((blog: blog, index: number) => {
+            return (
+              <div
+                key={blog.id ? +blog.id + index : index}
+                onClick={() => {
+                  router.push(`/post/${blog.id}`)
+                }}
+                className={style.blogPost}
+              >
+                <img
+                  src={blog.photo_url}
+                  alt={blog.title + index}
+                  style={{ width: '100%' }}
+                />
+                <div className={style.blogDescWrapper}>
+                  <div
+                    className={style.blogCatgeory}
+                  >{`Post: ${blog.category}`}</div>
+                  <div className={style.blogTitle}>{blog.title}</div>
 
+                  <div className={style.blogDescription}>
+                    {blog.content_text}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+      </div>
       {(isLoading || isFetching) && (
         <div className='display-flex-item-center'>
           <span className='loader-spiner'></span>
         </div>
       )}
-    </div>
+    </Fragment>
   )
 }
 

@@ -8,7 +8,7 @@ export type blog = {
   content_text?: string
   title: string
   photo_url: string
-  created_at?: string
+  created_at: Date
   id?: string
   description?: string
   content_html?: string

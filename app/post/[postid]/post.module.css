@@ -1,0 +1,60 @@
+.postMain {
+  background-color: #020c1b;
+  height: 17rem;
+}
+
+.postWrapper {
+  width: 65%;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  margin-bottom: 5rem;
+}
+
+.postHeader {
+  color: #00bf63;
+  padding: 20px 0px 20px 0px;
+}
+
+.postDate {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffde59;
+}
+.postblog {
+  padding: 25px;
+  background-color: white;
+}
+
+.imageWrapper {
+  text-align: center;
+}
+
+.postContent {
+  margin-top: 1rem;
+}
+
+.postContent h1 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.postContent h2 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.postContent > p:not(:first-child) {
+  margin: 10px;
+}
+
+.pofileWrapper {
+  margin-top: 2rem;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.profileImage {
+  border-radius: 50%;
+}

@@ -1,7 +1,37 @@
 .blogWrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 2%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
 }
 .blogPost {
-  flex-basis: 33.33333%;
+  flex-basis: 30%;
+  background-color: #222222;
+  margin-bottom: 25px;
+}
+
+.blogDescWrapper {
+  padding: 25px;
+}
+.blogCatgeory {
+  font-size: 12px;
+  color: #00bf63;
+  font-weight: 600;
+}
+
+.blogTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+.blogDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(238, 231, 231, 0.65);
+  -webkit-line-clamp: 3;
 }

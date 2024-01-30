@@ -27,8 +27,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <h1>Blogs Lists</h1>
+      <div>
         <Suspense fallback={<span className='loader-spiner'></span>}>
           <Blogs />
         </Suspense>
