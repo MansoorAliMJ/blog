@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
 }
 .blogPost {

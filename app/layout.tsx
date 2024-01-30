@@ -1,28 +1,32 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import AppProvider from '@/app/redux/AppProvider'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import AppProvider from "@/app/redux/AppProvider";
+import Navbar from "./component/Navbar/Navbar";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Usedo',
+    default: "Usedo",
     template: `%s | Usedo`,
   },
-  description: 'Kuwaiit best blog on technologies',
-}
+  description: "Kuwaiit best blog on technologies",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={inter.className}>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <Navbar />
+          {children}
+        </AppProvider>
       </body>
     </html>
-  )
+  );
 }

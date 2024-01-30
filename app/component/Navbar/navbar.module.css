@@ -1,0 +1,11 @@
+.navbarWrapper {
+  background-color: #3d7bae;
+  color: #ffde59;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #00bf63;
+}

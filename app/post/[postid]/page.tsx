@@ -1,11 +1,14 @@
-import React, { Fragment } from 'react'
-import { post, dataBlog, paramss } from '@/app/component/types/types'
-import parse from 'html-react-parser'
-import Image from 'next/image'
-import style from './post.module.css'
+import React from "react";
+import { post, dataBlog, paramss } from "@/app/component/types/types";
+import parse from "html-react-parser";
+import Image from "next/image";
+
+import ReletedPosts from "@/app/component/Blogs/ReletedPosts";
+
+import style from "./post.module.css";
 export async function generateMetadata({ params }: paramss) {
-  const postid = params.postid
-  const data: dataBlog = await fetchData(postid)
+  const postid = params.postid;
+  const data: dataBlog = await fetchData(postid);
 
   if (!data.errorCode) {
     return {
@@ -14,7 +17,7 @@ export async function generateMetadata({ params }: paramss) {
       keywords: [
         `${data.res.blog.category}`,
         `${data.res.blog.title}`,
-        'usedo blog',
+        "usedo blog",
       ],
       robots: {
         index: true,
@@ -24,45 +27,45 @@ export async function generateMetadata({ params }: paramss) {
           index: true,
           follow: true,
           noimageindex: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
         },
       },
-    }
+    };
   }
 }
 
 const fetchData = async (postid: number) => {
   const response = await fetch(
-    `${process.env.APP_BACKEND_URL}/sample-data/blog-posts/${postid}`
-  )
-  const res: post = await response.json()
+    `${process.env.APP_BACKEND_URL}/sample-data/blog-posts/${postid}`,
+  );
+  const res: post = await response.json();
 
-  const errorCode = response.ok ? false : response.status
+  const errorCode = response.ok ? false : response.status;
 
-  return { errorCode, res }
-}
+  return { errorCode, res };
+};
 
 const page = async ({ params }: paramss) => {
-  const postid = params.postid
-  const data = await fetchData(postid)
+  const postid = params.postid;
+  const data = await fetchData(postid);
   return (
     <main className={style.postMain}>
       <div className={style.postWrapper}>
         {!data.errorCode && (
           <>
             <div className={style.postHeader}>
-              <h6 className='mb-2'>{`bolg>${data.res.blog.category}`}</h6>
+              <h6 className="mb-2">{`bolg>${data.res.blog.category}`}</h6>
               <h1>{data.res.blog.title}</h1>
               <div className={`${style.postDate} mt-2`}>
                 {new Date(data.res.blog.created_at).toLocaleDateString(
-                  'en-US',
+                  "en-US",
                   {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                  }
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  },
                 )}
               </div>
             </div>
@@ -86,14 +89,14 @@ const page = async ({ params }: paramss) => {
             <hr />
             <div className={style.pofileWrapper}>
               <Image
-                src='/images/default.jpeg'
-                alt='profile'
+                src="/images/default.jpeg"
+                alt="profile"
                 height={150}
                 width={150}
                 className={style.profileImage}
               />
               <div>
-                <h4 className='mb-1'>Sample User</h4>
+                <h4 className="mb-1">Sample User</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
                   feugiat metus. Integer ut aliquam magna, at mattis mauris.
@@ -104,11 +107,16 @@ const page = async ({ params }: paramss) => {
                 </p>
               </div>
             </div>
+            <hr />
+            <div>
+              <div className={style.reletedPostText}>More Posts by Author</div>
+              <ReletedPosts />
+            </div>
           </>
         )}
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default page
+export default page;
