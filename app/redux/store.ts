@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { blogApi } from './apis/blogApi'
+import { configureStore } from "@reduxjs/toolkit";
+import { blogApi } from "./apis/blogsApi";
 
 const store = configureStore({
   reducer: {
@@ -7,6 +7,6 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(blogApi.middleware),
-})
+});
 
-export default store
+export default store;

@@ -1,15 +1,13 @@
 "use client";
 import React, { useState, useEffect, Fragment } from "react";
 import { useRouter } from "next/navigation";
-import { useGetBlogPostsQuery } from "@/app/redux/apis/blogApi";
+import { useGetReltedBlogPostsQuery } from "@/app/redux/apis/blogsApi";
 import { blog } from "@/app/component/types/types";
 import style from "./blog.module.css";
 const ReletedPosts = () => {
   const router = useRouter();
-  const { data, isLoading, isFetching, isSuccess } = useGetBlogPostsQuery({
-    start: 0,
-    end: 3,
-  });
+  const { data, isLoading, isFetching, isSuccess } =
+    useGetReltedBlogPostsQuery();
   return (
     <div>
       {isSuccess &&
