@@ -1,3 +1,37 @@
 .main {
   padding-top: calc(70px + 2rem);
 }
+
+.mainWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  width: 60%;
+  margin: auto;
+}
+
+.post {
+  flex-basis: 30%;
+  margin-bottom: 25px;
+}
+
+.productImage {
+  width: 100%;
+  object-fit: cover;
+  height: 300px;
+}
+.postDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  -webkit-line-clamp: 3;
+}
+
+.productInfo {
+  padding: 15px;
+}

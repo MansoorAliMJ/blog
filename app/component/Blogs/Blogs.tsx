@@ -7,11 +7,9 @@ import style from "./blog.module.css";
 
 const Blogs = () => {
   const router = useRouter();
-  const [start, setStart] = useState<number>(0);
-  const [end, setEnd] = useState<number>(20);
+  const [page, setPage] = useState<number>(0);
   const { data, isLoading, isFetching, isSuccess } = useGetBlogPostsQuery({
-    start,
-    end,
+    page,
   });
 
   useEffect(() => {
@@ -19,8 +17,7 @@ const Blogs = () => {
       const scrolledToBottom =
         window.innerHeight + window.scrollY + 1 >= document.body.offsetHeight;
       if (scrolledToBottom) {
-        setStart(start + 20);
-        setEnd(end + 20);
+        setPage(page + 1);
       }
     };
 
@@ -29,7 +26,7 @@ const Blogs = () => {
     return function () {
       document.removeEventListener("scroll", onScroll);
     };
-  }, [start]);
+  }, [page]);
 
   return (
     <Fragment>

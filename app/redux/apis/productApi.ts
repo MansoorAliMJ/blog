@@ -6,13 +6,10 @@ export const productApi = createApi({
     baseUrl: "https://dummyjson.com",
   }),
   endpoints: (builder) => ({
-    getProducts: builder.query<
-      products,
-      { start: number; end: number; search?: string }
-    >({
-      query: ({ start, end, search }) => {
+    getProducts: builder.query<products, { page: number; search?: string }>({
+      query: ({ page, search }) => {
         return {
-          url: `/products?skip=${start}&limit=${end}${
+          url: `/products?skip=${page * 10}&limit=20${
             search ? `&search=${search}` : ""
           }`,
         };

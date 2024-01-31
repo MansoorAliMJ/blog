@@ -6,10 +6,10 @@ export const blogApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_base_url,
   }),
   endpoints: (builder) => ({
-    getBlogPosts: builder.query<posts, { start: number; end: number }>({
-      query: ({ start, end }) => {
+    getBlogPosts: builder.query<posts, { page: number }>({
+      query: ({ page }) => {
         return {
-          url: `/sample-data/blog-posts?offset=${start}&limit=${end}`,
+          url: `/sample-data/blog-posts?offset=${page * 10}&limit=30`,
         };
       },
       serializeQueryArgs: ({ endpointName }) => {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import React, { Suspense } from "react";
+import Products from "../component/products/Products";
 import style from "./products.module.css";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function Home() {
     <main className={style.main}>
       <div>
         <Suspense fallback={<span className="loader-spiner"></span>}>
-          {/* <Blogs /> */}
+          <Products />
         </Suspense>
       </div>
     </main>
