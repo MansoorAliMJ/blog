@@ -1,12 +1,13 @@
 .postMain {
   background-color: #020c1b;
   height: 20rem;
+  padding-top: calc(70px + 2rem);
 }
 
 .postWrapper {
   width: 65%;
   margin: auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   margin-bottom: 5rem;
 }

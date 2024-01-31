@@ -229,7 +229,7 @@ td {
 
 .display-flex-item-end {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .display-flex-item-space-btw {
