@@ -158,7 +158,6 @@ const Products = () => {
             breakLinkClassName='page-link'
             containerClassName='pagination'
             activeClassName='active'
-            renderOnZeroPageCount={null}
           />
         )}
       </div>
