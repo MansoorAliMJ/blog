@@ -1,0 +1,42 @@
+.main {
+  width: 70%;
+  margin: auto;
+  padding-top: calc(70px + 2rem);
+}
+
+.wrapper {
+  display: flex;
+  gap: 2rem;
+}
+.imageWrapper {
+  width: 100vw;
+}
+
+.postContent {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.profileImage {
+  border-radius: 50%;
+}
+
+.profileWrapper {
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 2px solid balck;
+  padding: 10px;
+}
+
+.userRequest {
+  padding: 10px;
+  border: 2px solid #83cd29;
+}
+
+.productPrice {
+  color: red;
+}

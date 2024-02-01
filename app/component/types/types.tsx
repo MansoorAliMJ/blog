@@ -25,7 +25,6 @@ export type paramss = {
     postid: number
   }
 }
-
 export type posts = {
   total_blogs?: number
   offset?: number
@@ -33,6 +32,17 @@ export type posts = {
   success?: boolean
   message?: string
   blogs: blog[]
+}
+
+export type paramproduct = {
+  params: {
+    productid: number
+  }
+}
+
+export type dataProduct = {
+  errorCode: Boolean | number
+  res: product
 }
 
 export type product = {

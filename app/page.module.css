@@ -1,5 +1,119 @@
 .main {
-  background-color: #020c1b;
-  min-height: 100vh;
   padding-top: calc(70px + 2rem);
+}
+
+.mainWrapper {
+  cursor: pointer;
+  width: 80%;
+  margin: 10px;
+}
+
+.postWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  width: 100%;
+  margin: 10px;
+}
+.categoriesBox {
+  width: 15%;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.categories {
+  border: 2px solid #edeeee;
+  padding: 10px;
+  cursor: pointer;
+}
+.filter {
+  font-size: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.clearFilter {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+  color: #454950;
+}
+.category {
+  padding: 5px;
+  margin-right: 4px;
+  color: #454950;
+}
+
+.clearFilter:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.category:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.categoryWrapper {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.searchQuery {
+  font-weight: 400;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.post {
+  flex-basis: 23%;
+  margin-bottom: 25px;
+  border: 2px solid #edeeee;
+}
+
+.productImage {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+.postDescription {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  -webkit-line-clamp: 3;
+}
+
+.productInfo {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.productprice {
+  color: red;
+}
+
+.productTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.productBrand {
+  font-size: 10px;
+  color: #00bf63;
+  font-weight: 700;
+}
+
+.containerClassName {
+  display: flex;
 }

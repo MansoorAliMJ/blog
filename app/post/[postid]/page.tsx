@@ -2,10 +2,12 @@ import React from 'react'
 import { post, dataBlog, paramss } from '@/app/component/types/types'
 import parse from 'html-react-parser'
 import Image from 'next/image'
+import { BsArrowLeftSquare } from 'react-icons/bs'
+import Link from 'next/link'
 
 import ReletedPosts from '@/app/component/Blogs/ReletedPosts'
-
 import style from './post.module.css'
+
 export async function generateMetadata({ params }: paramss) {
   const postid = params.postid
   const data: dataBlog = await fetchData(postid)
@@ -54,6 +56,9 @@ const page = async ({ params }: paramss) => {
   return (
     <main className={style.postMain}>
       <div className={style.postWrapper}>
+        <Link href={'/blog'}>
+          <BsArrowLeftSquare size={20} className='cursor-pointer color-white' />
+        </Link>
         {!data.errorCode && (
           <>
             <div className={style.postHeader}>

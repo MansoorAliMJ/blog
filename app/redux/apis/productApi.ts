@@ -15,7 +15,7 @@ export const productApi = createApi({
           url: `/products${`${
             !category
               ? search
-                ? `/search?q=${search}&skip=${page * 10}&limit=24`
+                ? `/search?q=${search}&skip=${page * 10}&limit=14`
                 : `?skip=${page * 10}&limit=24`
               : `/category/${category}`
           }`}`,

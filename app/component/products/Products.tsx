@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import ReactPaginate from 'react-paginate'
 import {
   useGetProductsQuery,
@@ -7,11 +8,13 @@ import {
 } from '@/app/redux/apis/productApi'
 
 import { product, category } from '@/app/component/types/types'
-import style from '@/app/products/products.module.css'
+import style from '@/app/page.module.css'
 
 const Products = () => {
+  const router = useRouter()
   const [page, setPage] = useState(0)
   const [query, setQuery] = useState<string>('')
+  const [queryValue, setQueryValue] = useState<string>('')
   const [category, setCategory] = useState<string>('')
   const { data, isLoading, isSuccess, isFetching } = useGetProductsQuery({
     page,
@@ -36,7 +39,10 @@ const Products = () => {
   const clearFilterV = (e: React.ChangeEvent<HTMLInputElement>) => {
     if ((e.target as HTMLButtonElement).value === '') {
       setQuery('')
+      setQueryValue('')
       setPage(0)
+    } else {
+      setQueryValue((e.target as HTMLButtonElement).value)
     }
   }
 
@@ -54,6 +60,7 @@ const Products = () => {
               onClick={() => {
                 setCategory('')
                 setQuery('')
+                setQueryValue('')
               }}
             >
               Clear filters
@@ -68,6 +75,7 @@ const Products = () => {
               className={style.searchQuery}
               onKeyUp={HandleSearchFilter}
               onChange={clearFilterV}
+              value={queryValue}
             />
           </div>
           <div className={style.categoryWrapper}>By Category</div>
@@ -90,38 +98,47 @@ const Products = () => {
             })}
         </div>
       </div>
-      <div className={style.mainWrapper}>
-        {(isLoading || isFetching) && (
-          <div className='display-flex-item-center'>
-            <span className='loader-spiner'></span>
-          </div>
-        )}
 
-        {isSuccess &&
-          data.products.map((product: product) => {
-            return (
-              <div key={product.id} className={style.post}>
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  className={style.productImage}
-                />
-                <div className={style.productInfo}>
-                  <div
-                    className={style.productprice}
-                  >{`${product.price} KWD`}</div>
-                  <div>
-                    <div className={style.productTitle}>{product.title}</div>
-                    <div className={style.productBrand}>{product.brand}</div>
-                  </div>
-                  <div className={style.postDescription}>
-                    {product.description}
+      <div className={style.mainWrapper}>
+        <div className={style.postWrapper}>
+          {(isLoading || isFetching) && (
+            <div className='display-flex-item-center'>
+              <span className='loader-spiner'></span>
+            </div>
+          )}
+
+          {isSuccess &&
+            data.products.map((product: product) => {
+              return (
+                <div
+                  key={product.id}
+                  className={style.post}
+                  onClick={() => {
+                    router.push(`/product/${product.id}`)
+                  }}
+                >
+                  <img
+                    src={product.thumbnail}
+                    alt={product.title}
+                    className={style.productImage}
+                  />
+                  <div className={style.productInfo}>
+                    <div
+                      className={style.productprice}
+                    >{`${product.price} KWD`}</div>
+                    <div>
+                      <div className={style.productTitle}>{product.title}</div>
+                      <div className={style.productBrand}>{product.brand}</div>
+                    </div>
+                    <div className={style.postDescription}>
+                      {product.description}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
-
+              )
+            })}
+          {isSuccess && !data.total && <div>No data found for your search</div>}
+        </div>
         <ReactPaginate
           nextLabel='next'
           onPageChange={handlePageClick}
